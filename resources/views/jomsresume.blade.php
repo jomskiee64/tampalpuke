@@ -251,6 +251,8 @@
   <!-- Home Button (fixed top-right, outside of sections) -->
   <div class="home-button">
     <a href="{{ url('profile') }}"><i class="fas fa-home"></i> Home</a>
+    <a href="{{ url('reymark resume') }}"><i class=""></i> Reymark Resume</a>
+     
   </div>
 
   <div class="resume-wrapper">
