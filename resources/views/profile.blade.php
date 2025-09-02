@@ -8,6 +8,29 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body { background: #000; color: #fff; overflow-x: hidden; }
 
+    /* ✅ Navbar */
+    .navbar {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      display: flex;
+      gap: 20px;
+      z-index: 5;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover { color: #ffb300; }
+    .navbar i { font-size: 1.3rem; }
+
     .container {
       min-height: 100vh;
       display: flex;
@@ -51,6 +74,7 @@
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .profile-card:hover {
@@ -67,24 +91,18 @@
       transition: transform 0.5s;
     }
 
-    .profile-card:hover img {
-      transform: scale(1.1);
-    }
-
     .profile-card h2 {
       margin: 10px 0;
-      font-size: 1.5rem; /* ✅ Same size for all names */
+      font-size: 1.5rem;
     }
 
     .profile-card h2 a {
       text-decoration: none;
-      color: #fff; /* ✅ White names */
+      color: #fff;
       transition: color 0.3s;
     }
 
-    .profile-card h2 a:hover {
-      color: #ff3d00; /* ✅ Hover effect (orange-red) */
-    }
+    .profile-card h2 a:hover { color: #ff3d00; }
 
     .profile-card p {
       font-size: 0.9rem;
@@ -140,30 +158,76 @@
       color: #aaa;
       font-size: 0.9rem;
     }
+
+    /* ✅ Zoom Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px #ffb300;
+      animation: zoomIn 0.4s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal span {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .modal span:hover { color: #ff3d00; }
   </style>
+
+  <!-- ✅ Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<!-- ✅ Navbar -->
+<div class="navbar">
+  <a href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+  <a href="{{ url('about us') }}"><i class="fas fa-info-circle"></i> About Us</a>
+</div>
+
 <div class="container">
   <h1>Meet Our Profiles</h1>
 
   <div class="profiles">
     <!-- Profile 1 -->
     <div class="profile-card">
-  <img src="{{ asset('images/joms.jfif') }}" alt="Jomel">
-  <h2><a href="https://github.com/jomskiee64" target="_blank">Jomel</a></h2>
-  <p>person 1</p>
-  <a href="{{ url('jomsresume') }}" target="_blank">View Resume</a>
-</div>
-
+      <img src="{{ asset('images/joms.jfif') }}" alt="Jomel" class="zoomable">
+      <h2><a href="https://github.com/jomskiee64" target="_blank">Jomel</a></h2>
+      <p>person 1</p>
+      <a href="{{ url('jomsresume') }}" target="_blank">View Resume</a>
+    </div>
 
     <!-- Profile 2 -->
     <div class="profile-card">
-      <img src="{{ asset('images/reymark.jpg') }}" alt="Reymark">
-      <h2><a href="https://github.com/reymark" target="_blank">Reymark </a></h2>
+      <img src="{{ asset('images/reymark.jpg') }}" alt="Reymark" class="zoomable">
+      <h2><a href="https://github.com/reymark" target="_blank">Reymark</a></h2>
       <p>person 2</p>
       <a href="{{ asset('resumes/reymark_resume.pdf') }}" target="_blank">View Resume</a>
     </div>
-  </div> <!-- ✅ closed profiles div -->
+  </div>
 
   <footer>© 2025 Team Profiles | All Rights Reserved</footer>
 </div>
@@ -172,5 +236,31 @@
 <div class="abstract"></div>
 <div class="circle"></div>
 <div class="circle"></div>
+
+<!-- ✅ Modal for zoomed image -->
+<div id="imgModal" class="modal">
+  <span id="closeBtn">&times;</span>
+  <img id="modalImg" src="">
+</div>
+
+<script>
+  // Get modal elements
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // Add click event to zoomable images
+  document.querySelectorAll(".zoomable").forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    });
+  });
+
+  // Close modal
+  closeBtn.onclick = () => { modal.style.display = "none"; };
+  modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+</script>
+
 </body>
 </html>
