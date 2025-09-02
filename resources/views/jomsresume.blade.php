@@ -153,28 +153,26 @@
     ul li { margin-bottom: 8px; }
 
     /* Home Button */
-   /* Home Button */
-.home-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-.home-button a {
-  display: inline-block;
-  padding: 10px 20px;
-  background: linear-gradient(45deg, #ffb300, #ff3d00);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.home-button a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #ffb300;
-}
-
+    .home-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .home-button a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #ffb300, #ff3d00);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .home-button a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ffb300;
+    }
 
     footer {
       text-align: center;
@@ -250,6 +248,11 @@
 </head>
 <body>
 
+  <!-- Home Button (fixed top-right, outside of sections) -->
+  <div class="home-button">
+    <a href="{{ url('profile') }}"><i class="fas fa-home"></i> Home</a>
+  </div>
+
   <div class="resume-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -283,9 +286,6 @@
     <!-- Main -->
     <main class="main">
       <section id="about">
-        <div class="home-button">
-          <a href="{{ url('profile') }}"><i class="fas fa-home"></i> Home</a>
-        </div>
         <h1>About Me</h1>
         <p>Hello! My name is <strong>Jomel Onido</strong>. I’m 18 years old and I live in Rimos 2, Luna, La Union. I’m a motivated individual who believes in the power of growth and continuous learning.</p>
       </section>
