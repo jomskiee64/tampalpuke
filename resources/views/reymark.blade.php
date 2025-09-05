@@ -6,7 +6,6 @@
   <title>Reymark Morales - My Portfolio</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
@@ -35,6 +34,34 @@
 
     header h1 {
       font-size: 28px;
+    }
+
+    /* Top right buttons */
+    .top-buttons {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    .top-buttons a {
+      background: #2e8b57; /* green button */
+      color: white;
+      padding: 8px 15px;
+      margin-left: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .top-buttons a:hover {
+      background: #3fa76c;
+      transform: scale(1.05);
+    }
+
+    .top-buttons i {
+      margin-right: 6px;
     }
 
     nav {
@@ -154,6 +181,11 @@
       section h3 {
         font-size: 16px;
       }
+
+      .top-buttons {
+        position: static;
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -161,6 +193,13 @@
 
   <header>
     <h1>Reymark Morales</h1>
+
+    <!-- Top Right Buttons -->
+    <div class="top-buttons">
+      <a href="{{ url('profile') }}"><i class="fas fa-home"></i> Home</a>
+      <a href="{{ url('jomsresume') }}"><i class="fas fa-file-alt"></i> Jomsresume</a>
+    </div>
+
     <nav>
       <a href="#about">About</a>
       <a href="#hobbies">Hobbies</a>
@@ -173,7 +212,7 @@
   </header>
 
   <div class="hero">
-    <img src="reymark.jpg" alt="Photo of Reymark Morales">
+    <img src="{{ asset('images/reymark.jpg') }}" alt="Photo of Reymark Morales">
     <h2>Welcome to My Portfolio</h2>
     <p>3rd Year IT Student | Hardworking | Determined</p>
   </div>
@@ -197,8 +236,9 @@
       <h3>Background</h3>
       <p>I come from a supportive family who instilled in me the values of perseverance, responsibility, 
         and determination. Their sacrifices inspire me to remain focused on my studies and work diligently
-         toward my goals. Growing up in this environment has motivated me to strive for success, not only for
-          my personal growth but also to give back to my family and contribute to my community.
+        toward my goals. Growing up in this environment has motivated me to strive for success, not only for
+        my personal growth but also to give back to my family and contribute to my community.</p>
+    </section>
 
     <section id="skills">
       <h3>Skills</h3>
