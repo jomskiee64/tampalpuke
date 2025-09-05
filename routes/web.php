@@ -17,3 +17,6 @@ Route::get('/jomsresume', function () {
 Route::get('/about us', function () {
     return view('about us');
 });
+Route::get('/reymarkresume', function () {
+    return view('reymarkresume');
+});
